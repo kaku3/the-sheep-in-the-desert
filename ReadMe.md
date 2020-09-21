@@ -6,7 +6,7 @@ html, css, javascript, およびオブジェクト指向学習用ミニゲーム
 
 業務プログラムの学習をターゲットとしており、canvas を用いない構成としました。
 
-(外部ライブラリ)
+## 外部ライブラリ
 - [jQuery](https://jquery.com/)
 js基本ライブラリ。
 - [handebars](https://handlebarsjs.com/)

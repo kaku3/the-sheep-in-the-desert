@@ -19,11 +19,9 @@ body {
     height: 640px;
     background-image: url("../image/bg.png");
     background-size: cover;
-}
-
-.scene {
-    font-family: 'main';
     overflow: hidden;
+
+    font-family: 'main';
 }
 
 /*
@@ -62,6 +60,14 @@ body {
     display: flex;
     justify-content: space-between;
 }
+.game > .sight {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    z-index: 10000;
+    background-image: url("../image/sight.png");
+}
+
 
 .scene.game .console > * {
     padding: .5rem;
@@ -75,5 +81,5 @@ body {
     position: absolute;
     width: 192px;
     height: 96px;
-    background-image: url(../image/sheep.png)
+    background-image: url("../image/sheep.png")
 }

@@ -84,11 +84,9 @@ class Game {
      * title 初期化
      */
     initTitle() {
-        this.initScene('template#title')
+        const game = this.initScene('template#title')
 
-        let game = $('.game')
-
-        let t = gsap.timeline({ repeat: -1, yoyo: true })
+        const t = gsap.timeline({ repeat: -1, yoyo: true })
         t.to('.start', { opacity: 0, duration: .5})
 
         $('.scene.title', game).on('click', (e) => {
@@ -102,8 +100,18 @@ class Game {
      * game 初期化
      */
     initGame() {
-        this.initScene('template#game')
-        Sheep.initialize($('.game .scene.game'))
+        const game = this.initScene('template#game')
+        Sheep.initialize($('.scene.game', game))
+
+        // 照準カーソル
+        const sight = $('.sight', game)
+        $(document).on('mousemove', (e) => {
+            const o = game.offset()
+            sight.css({
+                left: e.pageX - o.left - sight.width() / 2,
+                top: e.pageY - o.top - sight.height() / 2
+            })
+        })
 
         this.score = 0
         this.time = GAME_TIME
@@ -116,10 +124,12 @@ class Game {
      * @param {*} params 
      */
     initScene(sceneTemplate, params = {}) {
-        let game = $('.game')
-        let template = Handlebars.compile($(sceneTemplate).html())
+        const game = $('.game')
+        const template = Handlebars.compile($(sceneTemplate).html())
         game.empty()
         game.append(template(params))
+
+        return game
     }
 
 
