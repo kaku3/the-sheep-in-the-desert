@@ -4,12 +4,12 @@
 
 html, css, javascript, およびオブジェクト指向学習用ミニゲームプロジェクト。(作成中)
 
-業務プログラムの学習をターゲットとしており、canvas を用いない構成としています。
+業務プログラムの学習をターゲットとしており、canvas を用いない構成としました。
 
 (外部ライブラリ)
-- jQuery
-js基本libray
+- [jQuery](https://jquery.com/)
+js基本ライブラリ。
 - [handebars](https://handlebarsjs.com/)
-js用template library。あまり知られていないが html テンプレートにダブルブラケット記述({{value}})で変数を置き換えられて便利。
+js用templateライブラリ。html テンプレートにダブルブラケット記述({{value}})で変数を置き換えられる。
 - [GSAP3](https://greensock.com/gsap/)
-Animation libray。旧TweenMax。アニメーションを簡単に記述できる。
+アニメーションライブラリ。旧TweenMax。アニメーションを簡単に記述できる。
