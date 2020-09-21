@@ -66,6 +66,8 @@ body {
     height: 64px;
     z-index: 10000;
     background-image: url("../image/sight.png");
+
+    pointer-events: none;
 }
 
 
@@ -81,5 +83,7 @@ body {
     position: absolute;
     width: 192px;
     height: 96px;
-    background-image: url("../image/sheep.png")
+    background-image: url("../image/sheep.png");
+
+    pointer-events: none;
 }

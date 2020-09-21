@@ -103,20 +103,36 @@ class Game {
         const game = this.initScene('template#game')
         Sheep.initialize($('.scene.game', game))
 
-        // 照準カーソル
-        const sight = $('.sight', game)
-        $(document).on('mousemove', (e) => {
-            const o = game.offset()
-            sight.css({
-                left: e.pageX - o.left - sight.width() / 2,
-                top: e.pageY - o.top - sight.height() / 2
-            })
-        })
+        this.initSight(game)
 
         this.score = 0
         this.time = GAME_TIME
 
         this.setNextScene(SCENE.GAME_EXEC, true)
+    }
+    /**
+     * 照準カーソル初期化
+     * @param {*} game 
+     */
+    initSight(game) {
+        const scene = $('.scene.game', game)
+        const sight = $('.sight', game)
+        game.on('mousemove', (e) => {
+            sight.css({
+                left: e.offsetX - sight.width() / 2,
+                top: e.offsetY - sight.height() / 2
+            })
+        })
+        scene.on('click', (e) => {
+            const t = gsap.timeline()
+            t.to('.game > .sight', { scale: 0.8, duration: 0.02 })
+            t.to('.game > .sight', { scale: 1, duration: 0.05 })
+
+            this.shot(e.offsetX, e.offsetY)
+        })
+    }
+    shot(x, y) {
+        console.log(`${x}, ${y}`)
     }
 
     /**
