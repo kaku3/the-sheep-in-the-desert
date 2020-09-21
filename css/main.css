@@ -1,0 +1,79 @@
+body {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    background: #eee;
+
+    font-size: 32px;
+}
+
+.game {
+    position: relative;
+    margin: auto;
+    width: 640px;
+    height: 640px;
+    background-image: url("../image/bg.png");
+    background-size: cover;
+}
+
+.scene {
+    font-family: 'main';
+    overflow: hidden;
+}
+
+/*
+    title
+*/
+
+.scene.title h1 {
+    margin-top: 25%;
+}
+.scene.title .start {
+    margin-top: 30%;
+}
+
+.scene.title h1 .title1 {
+    color: #222222;
+
+    font-size: 4rem;
+    letter-spacing: 1.4;
+}
+
+.scene.title h1 .title2 {
+    margin-top: .5rem;
+
+    color: #444444;
+
+    font-size: 2rem;
+}
+
+/*
+    game
+*/
+.scene.game {
+    position: relative;
+}
+.scene.game .console {
+    display: flex;
+    justify-content: space-between;
+}
+
+.scene.game .console > * {
+    padding: .5rem;
+}
+
+.scene.game .console > * > label {
+    font-size: 2.8rem;
+}
+
+.sheep {
+    position: absolute;
+    width: 192px;
+    height: 96px;
+    background-image: url(../image/sheep.png)
+}

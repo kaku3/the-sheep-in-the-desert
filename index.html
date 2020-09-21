@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sheeps-in-desart</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="game"></div>
+
+    <template id="title">
+        <div class="scene title">
+            <h1>
+                <div class="title1">The Sheeps</div>
+                <div class="title2">in the desart</div>
+            </h1>
+            <div class="start">
+                Click to Play
+            </div>
+        </div>
+    </template>
+    <template id="game">
+        <div class="scene game">
+            <div class="console">
+                <div class="score">
+                    <label for="score-value">SCORE</label>
+                    <div class="score-value">0</div>
+                </div>
+                <div class="time">
+                    <label for="time-value">TIME</label>
+                    <div class="time-value">0</div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="sheep">
+        <div id="sheep-{{id}}" class="sheep"></div>
+    </template>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/sheep.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        $(() => {
+            Game.create()
+        })
+    </script>
+</body>
+</html>
