@@ -35,10 +35,13 @@ class Sheep {
         Sheep.scene.append(Sheep.template(this))
 
         let yy = this.y - SHEEP_HEIGHT
-        this.tl = gsap.timeline()
+        this.tl = gsap.timeline({
+            onComplete: Sheep.onGsapComplete,
+            onCompleteParams: [ this ]
+        })
         this.tl.fromTo(this.selector,
             { x: this.x + FIELD_SIZE_X, y: yy },
-            { x: this.x, y: yy , onComplete: Sheep.onGsapComplete, onCompleteParams: [ this ]})
+            { x: this.x, y: yy})
 
         $(this.selector).css('z-index', y)
     }
@@ -59,7 +62,6 @@ class Sheep {
         return this.status == SHEEP_STATUS.WALK
     }
     setHit() {
-        this.status = SHEEP_STATUS.HIT
         this.tl.kill()
         this.tl = gsap.timeline({
             onComplete: Sheep.onGsapComplete,
@@ -67,8 +69,9 @@ class Sheep {
         })
         this.tl.to(this.selector, {
             opacity: 1,
-            duration: 1,
+            duration: 0.5,
         })
+        this.status = SHEEP_STATUS.HIT
     }
 
     static create() {
@@ -87,6 +90,21 @@ class Sheep {
     static execute() {
         if(Sheep.sheeps.length < 5) {
             Sheep.sheeps.push(Sheep.create())
+        }
+    }
+
+    /**
+     * アニメーションタイムラインupdate時処理
+     * @param {*} params 
+     */
+    static onGsapUpdate(params) {
+        const self = params
+        const pos = self.getRect()
+
+        switch(self.status) {
+            case SHEEP_STATUS.AWAY:
+                Smoke.create(pos.x1, pos.y1)
+                break
         }
     }
 
@@ -112,13 +130,16 @@ class Sheep {
                 self.status = SHEEP_STATUS.WALK
                 break
             case SHEEP_STATUS.HIT:
-                self.tl = gsap.timeline()
+                self.tl = gsap.timeline({
+                    onUpdate: Sheep.onGsapUpdate,
+                    onUpdateParams: [ self ],
+                    onComplete: Sheep.onGsapComplete,
+                    onCompleteParams: [ self ]
+                })
                 self.tl.to(self.selector, {
                     x: -FIELD_SIZE_X,
                     duration: 0.5,
-                    ease: Power2.easeOut,
-                    onComplete: Sheep.onGsapComplete,
-                    onCompleteParams: [ self ]
+                    ease: Power2.easeOut
                 })
                 self.status = SHEEP_STATUS.AWAY
                 break

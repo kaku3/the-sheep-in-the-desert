@@ -63,7 +63,7 @@ class Horn {
             onComplete: Horn.onGsapComplete,
             onCompleteParams: [ this ]
         })
-        this.tl.to(this.selector.body, { opacity: 1, duration: 1 })
+        this.tl.to(this.selector.body, { opacity: 1, duration: 0.5 })
         this.tl.to(this.selector.body, {
             x: -FIELD_SIZE_X,
             duration: 0.5,
@@ -88,9 +88,10 @@ class Horn {
             const rect = o.getRect()
 
             // 奥行き方向（影と、羊の足元座標を比較）
-            if(Math.abs(yy - rect.y1) > 16) {
+            if(Math.abs(yy - rect.y1) > 24) {
                 return false
             }
+            // 幅・高さ判定
             if( (xx < rect.x0 || rect.x1 < xx)  // 幅
             ||  (zz < rect.y0 || rect.y1 < zz)  // 高さ
             ) {

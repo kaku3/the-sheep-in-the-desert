@@ -37,6 +37,7 @@
         <div class="player"></div>
         <div class="sight"></div>
     </template>
+    
     <template id="object-sheep">
         <div id="sheep-{{id}}" class="sheep"></div>
     </template>
@@ -46,12 +47,17 @@
         <div id="horn-body-{{id}}" class="horn body"></div>
     </template>
 
+    <template id="object-smoke">
+        <div id="smoke-{{id}}" class="smoke"></div>
+    </template>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <script src="js/global.js"></script>
     <script src="js/sheep.js"></script>
     <script src="js/horn.js"></script>
+    <script src="js/smoke.js"></script>
     <script src="js/main.js"></script>
     <script>
         $(() => {

@@ -103,6 +103,7 @@ class Game {
 
         Sheep.initialize(scene)
         Horn.initialize(scene)
+        Smoke.initialize(scene)
 
         this.initSight(game)
 
@@ -111,8 +112,8 @@ class Game {
 
         // player 登場アニメ
         const tl = gsap.timeline()
-        tl.set('.game > .player', { opacity: 0 })
-        tl.to('.game > .player', { opacity: 1, duration: 0.5, ease: Power2.easeIn })
+        tl.set('.game > .player', { opacity: 0, scaleX: 0, scaleY: 3 })
+        tl.to('.game > .player', { opacity: 1, scaleX: 1, scaleY: 1, duration: 0.5, ease: Power2.easeIn })
 
         this.setNextScene(SCENE.GAME_EXEC, true)
     }

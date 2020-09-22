@@ -121,3 +121,12 @@ body {
 
     pointer-events: none;
 }
+
+.smoke {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url("../image/smoke.png");
+
+    pointer-events: none;
+}
