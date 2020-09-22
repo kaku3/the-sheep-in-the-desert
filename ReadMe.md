@@ -3,13 +3,27 @@
 ![スクリーンショット](https://github.com/kaku3/the-sheep-in-the-desert/blob/master/docs/image/the-sheeps-in-the-desert.png)
 
 html, css, javascript, およびオブジェクト指向学習用ミニゲームプロジェクト。(作成中)
+※業務プログラムの学習をターゲットとし、canvas を用いない構成とした。
 
-業務プログラムの学習をターゲットとしており、canvas を用いない構成としました。
+できるだけ少ないコード量で様々な要素の学習ができることを目的としたため、オブジェクト指向やデザインパターン的に必ずしも正しいコードとはなっていないので注意。
+逆に「オブジェクト指向」や「デザインパターン」として正しいコードを追求するとコストバランスが悪いケースもあると思う。「メンテナンスが面倒くさい」と思ったら何かを疑ってみるとよいかもしれない。
 
-## 外部ライブラリ
+## 利用外部ライブラリ
 - [jQuery](https://jquery.com/)
 js基本ライブラリ。
 - [handebars](https://handlebarsjs.com/)
 js用templateライブラリ。html テンプレートにダブルブラケット記述({{value}})で変数を置き換えられる。
 - [GSAP3](https://greensock.com/gsap/)
 アニメーションライブラリ。旧TweenMax。アニメーションを簡単に記述できる。
+
+## 課題
+完成形のソースは実装量が多いので、作業の区切り毎に tasks タグを用意しています。
+次のタグ部分までの実装してみてください。
+- tasks/scene
+タイトル→ゲーム画面の基本遷移と、敵キャラの配置まで
+- tasks/sight
+照準カーソル追加
+- tasks/horn
+ツノ砲発射
+- tasks/horn_shot_with_player
+プレイヤーキャラクター配置
