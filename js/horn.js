@@ -17,13 +17,12 @@ class Horn {
 
         const d = Math.sqrt(Math.pow(tx - x, 2) + Math.pow((ty - y) * 8, 2))
         const zz = d / 10
-        const dd = d / 2000 + 0.1
+        const dd = d / 2400 + 0.1
 
         const body = $(this.selector.body)
         let ww = body.width() / 2
         let hh = body.height() / 2
 
-        gsap.from(this.selector.body, { left: x - ww, top: y - hh })
 
         this.tl = gsap.timeline({
             onUpdate: Horn.onGsapUpdate,
@@ -31,8 +30,9 @@ class Horn {
             onComplete: Horn.onGsapComplete,
             onCompleteParams: [ this ]
         })
-        this.tl.to(this.selector.body, { left: (tx - x) / 2 + x - ww, top: (ty - y) / 2 + y - zz - hh, ease: Sine.easeOut, duration: dd })
-        this.tl.to(this.selector.body, { left: tx - ww, top: ty - hh, ease: Sine.easeIn, duration: dd })
+        this.tl.set(this.selector.body, { left: x - ww, top: y - hh })
+        this.tl.to(this.selector.body, { left: (tx - x) / 2 + x - ww, top: (ty - y) / 2 + y - zz - hh, ease: Power2.easeOut, duration: dd })
+        this.tl.to(this.selector.body, { left: tx - ww, top: ty - hh, ease: Power2.easeIn, duration: dd })
 
         this.tlRotate = gsap.timeline({ repeat: -1 })
         this.tlRotate.to(this.selector.body, { rotation: "+=360", duration: 0.6, ease: Power0 })
@@ -41,10 +41,10 @@ class Horn {
         ww = shadow.width() / 2
         hh = shadow.height() / 2
 
-        gsap.from(this.selector.shadow, { left: x - ww, top: y - hh })
 
         this.tlShadow = gsap.timeline()
-        this.tlShadow.to(this.selector.shadow, { left: (tx - x) / 2 + x - ww, top: (ty - y) / 2 + y - hh, ease: Sine.easeOut, duration: dd })
+        this.tlShadow.set(this.selector.shadow, { left: x - ww, top: y - hh })
+        this.tlShadow.to(this.selector.shadow, { left: (tx - x) / 2 + x - ww, top: (ty - y) / 2 + y - hh, ease: Power2.easeOut, duration: dd })
         this.tlShadow.to(this.selector.shadow, { left: tx - ww, top: ty - hh, duration: dd })
 
         // 最背面
