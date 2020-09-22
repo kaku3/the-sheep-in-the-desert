@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sheeps-in-desart</title>
+    <title>砂漠のひつじ</title>
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
     <div class="game"></div>
 
-    <template id="title">
+    <template id="scene-title">
         <div class="scene title">
             <h1>
                 <div class="title1">The Sheeps</div>
@@ -21,7 +21,7 @@
             </div>
         </div>
     </template>
-    <template id="game">
+    <template id="scene-game">
         <div class="scene game">
             <div class="console">
                 <div class="score">
@@ -36,8 +36,13 @@
         </div>
         <div class="sight"></div>
     </template>
-    <template id="sheep">
+    <template id="object-sheep">
         <div id="sheep-{{id}}" class="sheep"></div>
+    </template>
+
+    <template id="object-horn">
+        <div id="horn-shadow-{{id}}" class="horn shadow"></div>
+        <div id="horn-body-{{id}}" class="horn body"></div>
     </template>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>

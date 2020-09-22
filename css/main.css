@@ -87,3 +87,22 @@ body {
 
     pointer-events: none;
 }
+
+.horn.body {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    background-image: url("../image/horn.png");
+
+    pointer-events: none;
+}
+
+.horn.shadow {
+    position: absolute;
+    width: 36px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0, .5);
+
+    pointer-events: none;
+}

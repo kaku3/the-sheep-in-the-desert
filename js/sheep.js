@@ -2,7 +2,7 @@ const SHEEP_WIDTH = 192
 const SHEEP_HEIGHT = 96
 
 const SHEEP_MOVE_SIZE_X_MIN = 32
-const SHEEP_MOVE_SIZE_X_MAX = 192
+const SHEEP_MOVE_SIZE_X_MAX = 288
 const SHEEP_MOVE_SIZE_X_RANGE = SHEEP_MOVE_SIZE_X_MAX - SHEEP_MOVE_SIZE_X_MIN
 
 const SHEEP_STATUS = {
@@ -18,6 +18,8 @@ class Sheep {
     static scene = null
     static sheeps = []
 
+    static template = Handlebars.compile($('template#object-sheep').html())
+
     constructor(id, x, y) {
 
         x += (id % 4) * FIELD_STEP_X / 4
@@ -27,15 +29,14 @@ class Sheep {
         this.selector = `#sheep-${id}`
         this.x = x
         this.y = y
-        this.speed = parseInt(Math.random() * 10) * 4 + 120
+        this.speed = parseInt(Math.random() * 10) * 8 + 120
         this.status = SHEEP_STATUS.APPEAR
 
-        let template = Handlebars.compile($('template#sheep').html())
-        Sheep.scene.append(template(this))
+        Sheep.scene.append(Sheep.template(this))
 
         let yy = this.y - SHEEP_HEIGHT
         this.tl = gsap.timeline()
-        this.tl.fromTo(this.selector, { x: this.x + 640, y: yy }, { x: this.x, y: yy , onComplete: Sheep.onGsapComplete, onCompleteParams: [ this ]})
+        this.tl.fromTo(this.selector, { x: this.x + FIELD_SIZE_X, y: yy }, { x: this.x, y: yy , onComplete: Sheep.onGsapComplete, onCompleteParams: [ this ]})
 
         $(this.selector).css('z-index', y)
     }

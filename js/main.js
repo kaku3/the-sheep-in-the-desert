@@ -84,7 +84,7 @@ class Game {
      * title 初期化
      */
     initTitle() {
-        const game = this.initScene('template#title')
+        const game = this.initScene('template#scene-title')
 
         const t = gsap.timeline({ repeat: -1, yoyo: true })
         t.to('.start', { opacity: 0, duration: .5})
@@ -100,8 +100,11 @@ class Game {
      * game 初期化
      */
     initGame() {
-        const game = this.initScene('template#game')
-        Sheep.initialize($('.scene.game', game))
+        const game = this.initScene('template#scene-game')
+        const scene = $('.scene.game', game)
+
+        Sheep.initialize(scene)
+        Horn.initialize(scene)
 
         this.initSight(game)
 
@@ -124,15 +127,23 @@ class Game {
             })
         })
         scene.on('click', (e) => {
-            const t = gsap.timeline()
-            t.to('.game > .sight', { scale: 0.8, duration: 0.02 })
-            t.to('.game > .sight', { scale: 1, duration: 0.05 })
-
             this.shot(e.offsetX, e.offsetY)
         })
     }
+    /**
+     * ツノ砲発射
+     * @param {*} x 
+     * @param {*} y 
+     */
     shot(x, y) {
-        console.log(`${x}, ${y}`)
+        const t = gsap.timeline()
+        t.to('.game > .sight', { scale: 0.8, duration: 0.02 })
+        t.to('.game > .sight', { scale: 1, duration: 0.05 })
+
+        if(Horn.canShoot()) {
+            Horn.create(PLAYER_X, PLAYER_Y, x, y)
+        }
+
     }
 
     /**
