@@ -23,8 +23,6 @@ class Game {
             self.changeScene()
         }
         self.execScene()
-
-        console.log('Game.exec : ' + self.currentScene)
     }
 
     constructor() {
@@ -148,7 +146,6 @@ class Game {
         if(Horn.canShoot()) {
             const player = '.game > .player'    
             const tl = gsap.timeline()
-            console.log("attack")
             tl.set(player, { backgroundImage: 'url("image/player-attack.png")' })
             tl.to(player, { opacity: 1, duration: 0.1})
             tl.set(player, { backgroundImage: 'url("image/player-stand.png")' })

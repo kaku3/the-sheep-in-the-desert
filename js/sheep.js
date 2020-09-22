@@ -36,13 +36,43 @@ class Sheep {
 
         let yy = this.y - SHEEP_HEIGHT
         this.tl = gsap.timeline()
-        this.tl.fromTo(this.selector, { x: this.x + FIELD_SIZE_X, y: yy }, { x: this.x, y: yy , onComplete: Sheep.onGsapComplete, onCompleteParams: [ this ]})
+        this.tl.fromTo(this.selector,
+            { x: this.x + FIELD_SIZE_X, y: yy },
+            { x: this.x, y: yy , onComplete: Sheep.onGsapComplete, onCompleteParams: [ this ]})
 
         $(this.selector).css('z-index', y)
     }
+    /**
+     * 羊矩形を返す。
+     */
+    getRect() {
+        const _o = $(this.selector)
+        return {
+            x0: _o.position().left,
+            x1: _o.position().left + SHEEP_WIDTH,
+            y0: _o.position().top,
+            y1: _o.position().top + SHEEP_HEIGHT
+        }
+    }
+
+    isWalk() {
+        return this.status == SHEEP_STATUS.WALK
+    }
+    setHit() {
+        this.status = SHEEP_STATUS.HIT
+        this.tl.kill()
+        this.tl = gsap.timeline({
+            onComplete: Sheep.onGsapComplete,
+            onCompleteParams: [ this ]
+        })
+        this.tl.to(this.selector, {
+            opacity: 1,
+            duration: 1,
+        })
+    }
 
     static create() {
-        const y = parseInt(Math.random() * (FIELD_Y_MAX - FIELD_Y_MIN) / FIELD_STEP_Y) * FIELD_STEP_Y + FIELD_Y_MIN
+        const y = parseInt(Math.random() * (FIELD_Y_MAX - FIELD_Y_MIN)) + FIELD_Y_MIN
         const x = parseInt(Math.random() * (FIELD_SIZE_X / 3 - SHEEP_WIDTH) / FIELD_STEP_X) * FIELD_STEP_X + (FIELD_SIZE_X / 4)
 
         const o = new Sheep(Sheep.serialIndex++, x, y)
@@ -61,7 +91,7 @@ class Sheep {
     }
 
     /**
-     * 
+     * アニメーションタイムライン終了時処理
      * @param {*} params 
      */
     static onGsapComplete(params) {
@@ -81,7 +111,21 @@ class Sheep {
                 })
                 self.status = SHEEP_STATUS.WALK
                 break
+            case SHEEP_STATUS.HIT:
+                self.tl = gsap.timeline()
+                self.tl.to(self.selector, {
+                    x: -FIELD_SIZE_X,
+                    duration: 0.5,
+                    ease: Power2.easeOut,
+                    onComplete: Sheep.onGsapComplete,
+                    onCompleteParams: [ self ]
+                })
+                self.status = SHEEP_STATUS.AWAY
+                break
+            case SHEEP_STATUS.AWAY:
+                $(self.selector).remove()
+                Sheep.sheeps = Sheep.sheeps.filter(v => v.id != self.id)
+                break
         }
     }
-
 }
