@@ -60,6 +60,21 @@ body {
     display: flex;
     justify-content: space-between;
 }
+.game > .player {
+    position: absolute;
+    left: 24px;
+    bottom: 8px;
+    width: 64px;
+    height: 128px;
+    z-index: 1000;
+    background-image: url("../image/player-stand.png");
+
+    pointer-events: none;
+}
+.game > .player.attack {
+    background-image: url("../image/player-attack.png");
+}
+
 .game > .sight {
     position: absolute;
     width: 64px;

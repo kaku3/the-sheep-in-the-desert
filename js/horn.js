@@ -17,7 +17,7 @@ class Horn {
 
         const d = Math.sqrt(Math.pow(tx - x, 2) + Math.pow((ty - y) * 8, 2))
         const zz = d / 10
-        const dd = d / 2400 + 0.1
+        const dd = d / 3200 + 0.02
 
         const body = $(this.selector.body)
         let ww = body.width() / 2
@@ -30,7 +30,7 @@ class Horn {
             onComplete: Horn.onGsapComplete,
             onCompleteParams: [ this ]
         })
-        this.tl.set(this.selector.body, { left: x - ww, top: y - hh })
+        this.tl.set(this.selector.body, { left: x - ww, top: y - hh - 16 }) // 16: ツノ砲の銃口位置
         this.tl.to(this.selector.body, { left: (tx - x) / 2 + x - ww, top: (ty - y) / 2 + y - zz - hh, ease: Power2.easeOut, duration: dd })
         this.tl.to(this.selector.body, { left: tx - ww, top: ty - hh, ease: Power2.easeIn, duration: dd })
 

@@ -111,6 +111,11 @@ class Game {
         this.score = 0
         this.time = GAME_TIME
 
+        // player 登場アニメ
+        const tl = gsap.timeline()
+        tl.set('.game > .player', { opacity: 0 })
+        tl.to('.game > .player', { opacity: 1, duration: 0.5, ease: Power2.easeIn })
+
         this.setNextScene(SCENE.GAME_EXEC, true)
     }
     /**
@@ -141,7 +146,14 @@ class Game {
         t.to('.game > .sight', { scale: 1, duration: 0.05 })
 
         if(Horn.canShoot()) {
-            Horn.create(PLAYER_X, PLAYER_Y, x, y)
+            const player = '.game > .player'    
+            const tl = gsap.timeline()
+            console.log("attack")
+            tl.set(player, { backgroundImage: 'url("image/player-attack.png")' })
+            tl.to(player, { opacity: 1, duration: 0.1})
+            tl.set(player, { backgroundImage: 'url("image/player-stand.png")' })
+
+            Horn.create(HORN_X, HORN_Y, x, y)
         }
 
     }

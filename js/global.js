@@ -13,5 +13,5 @@ const FIELD_STEP_X = 48
 const FIELD_STEP_Y = 48
 
 // プレイヤー位置
-const PLAYER_X = 48
-const PLAYER_Y = 632
+const HORN_X = 72
+const HORN_Y = 632
