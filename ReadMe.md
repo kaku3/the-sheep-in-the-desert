@@ -27,3 +27,7 @@ js用templateライブラリ。html テンプレートにダブルブラケッ�
 ツノ砲発射
 - tasks/horn_shot_with_player
 プレイヤーキャラクター配置
+- tasks/collision
+ツノ砲とヒツジの当たり判定
+- tasks/smoke_effect
+煙エフェクト
