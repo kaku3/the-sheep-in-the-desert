@@ -16,8 +16,8 @@ class Horn {
         Horn.scene.append(Horn.template(this))
 
         const d = Math.sqrt(Math.pow(tx - x, 2) + Math.pow((ty - y) * 8, 2))
-        const zz = d / 10
-        const dd = d / 3200 + 0.02
+        const zz = d / 20
+        const dd = d / 32000 + 0.1
 
         const body = $(this.selector.body)
         let ww = body.width() / 2
