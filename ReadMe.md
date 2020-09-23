@@ -11,7 +11,7 @@ html, css, javascript, およびオブジェクト指向学習用ミニゲーム
 ## 利用外部ライブラリ
 - [jQuery](https://jquery.com/)
 js基本ライブラリ。
-- [handebars](https://handlebarsjs.com/)
+- [handlebars](https://handlebarsjs.com/)
 js用templateライブラリ。html テンプレートにダブルブラケット記述({{value}})で変数を置き換えられる。
 - [GSAP3](https://greensock.com/gsap/)
 アニメーションライブラリ。旧TweenMax。アニメーションを簡単に記述できる。
@@ -31,3 +31,13 @@ js用templateライブラリ。html テンプレートにダブルブラケッ�
 ツノ砲とヒツジの当たり判定
 - tasks/smoke_effect
 煙エフェクト
+
+## 未実装
+- スコア処理
+コメカミに近いほど高得点
+- スコアエフェクト表示
+- ハイスコア保存
+- 結果画面
+
+## 遊び方
+マウスカーソルで照準を操作し、ヒツジのコメカミめがけてツノ砲を発射
