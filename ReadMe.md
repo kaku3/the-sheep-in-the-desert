@@ -1,6 +1,6 @@
 # 砂漠のひつじ
 
-![スクリーンショット](https://github.com/kaku3/the-sheep-in-the-desert/blob/master/docs/image/the-sheeps-in-the-desert.png)
+![スクリーンショット](https://github.com/kaku3/the-sheep-in-the-desert/blob/master/docs/image/the-sheeps-in-the-desert.gif)
 
 html, css, javascript, およびオブジェクト指向学習用ミニゲームプロジェクト。(作成中)
 ※業務プログラムの学習をターゲットとし、canvas を用いない構成とした。
