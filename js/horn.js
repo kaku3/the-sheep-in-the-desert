@@ -33,9 +33,13 @@ class Horn {
             onCompleteParams: [ this ]
         })
         this.tl.set(this.selector.body, { left: x - ww, top: y - hh - 16 }) // 16: ツノ砲の銃口位置
-        this.tl.to(this.selector.body, { left: (tx - x) / 2 + x - ww, top: (ty - y) / 2 + y - zz - hh, ease: Power2.easeOut, duration: dd })
-        this.tl.to(this.selector.body, { left: tx - ww, top: ty - hh, ease: Power2.easeIn, duration: dd })
-
+        this.tl.to(this.selector.body, {
+            keyframes: [
+                { left: (tx - x) / 2 + x - ww, top: (ty - y) / 2 + y - zz - hh, duration: dd },
+                { left: tx - ww, top: ty - hh, duration: dd }
+            ],
+            ease: Power1.easeOut
+        })
         this.tlRotate = gsap.timeline({ repeat: -1 })
         this.tlRotate.to(this.selector.body, { rotation: "+=360", duration: 0.6, ease: Power0 })
 
@@ -43,11 +47,15 @@ class Horn {
         ww = shadow.width() / 2
         hh = shadow.height() / 2
 
-
         this.tlShadow = gsap.timeline()
         this.tlShadow.set(this.selector.shadow, { left: x - ww, top: y - hh })
-        this.tlShadow.to(this.selector.shadow, { left: (tx - x) / 2 + x - ww, top: (ty - y) / 2 + y - hh, ease: Power2.easeOut, duration: dd })
-        this.tlShadow.to(this.selector.shadow, { left: tx - ww, top: ty - hh, ease: Power2.easeIn, duration: dd })
+        this.tlShadow.to(this.selector.shadow, {
+            keyframes: [
+                { left: (tx - x) / 2 + x - ww, top: (ty - y) / 2 + y - hh, duration: dd },
+                { left: tx - ww, top: ty - hh, duration: dd }
+            ],
+            ease: Power1.easeOut
+        })
 
         // 最背面
         $(this.selector.shadow).css('z-index', 1)
