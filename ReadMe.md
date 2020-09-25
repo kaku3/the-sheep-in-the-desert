@@ -47,5 +47,6 @@ js用templateライブラリ。html テンプレートにダブルブラケッ�
 ## オブジェクト指向について
 
 Qiitaに記事書きましたので、よければ見てください。
-[ゲームで理解するオブジェクト指向設計の基本](https://qiita.com/kaku3/items/a875fe1c098509b1fccd)
-[ゲームで身につけるオブジェクト指向設計(実装編)](https://qiita.com/kaku3/items/f482d48676eb7ea9c9a6)
+
+- [ゲームで理解するオブジェクト指向設計の基本](https://qiita.com/kaku3/items/a875fe1c098509b1fccd)
+- [ゲームで身につけるオブジェクト指向設計(実装編)](https://qiita.com/kaku3/items/f482d48676eb7ea9c9a6)
