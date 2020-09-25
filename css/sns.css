@@ -1,0 +1,55 @@
+.sns-share__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0;
+  }
+  .sns-share__item {
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    width: 15%;
+    margin-bottom: 14px;
+  }
+  .sns-share__btn {
+    display: block;
+    width: 100%;
+    padding: 6px 0;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transform: translate3d(0, 0, 0);
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+  }
+  .sns-share__btn:hover {
+    transform: translate3d(0, 4px, 0);
+    box-shadow: none;
+  }
+  .sns-share__btn--fb {
+    background-color: #4267b2;
+    box-shadow: 0 4px 0 #22355a;
+  }
+  .sns-share__btn--tw {
+    background-color: #1ca1f3;
+    box-shadow: 0 4px 0 #1473ad;
+  }
+  .sns-share__btn--line {
+    background-color: #00b900;
+    box-shadow: 0 4px 0 #008800;
+  }
+  .sns-share__btn--hb {
+    background-color: #02a4de;
+    box-shadow: 0 4px 0 #0578a1;
+  }
+  .sns-share__btn--po {
+    background-color: #ef4156;
+    box-shadow: 0 4px 0 #af3240;
+  }
+  .sns-share__btn--copy {
+    background-color: #bbb;
+    box-shadow: 0 4px 0 #999;
+  }

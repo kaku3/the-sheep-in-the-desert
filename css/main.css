@@ -1,15 +1,32 @@
 body {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    margin: 0;
     padding: 0;
-    width: 100vw;
-    height: 100vh;
     text-align: center;
     background: #eee;
 
     font-size: 32px;
+}
+main {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin: 32px 0;
+    padding: 0;
+    width: 100vw;
+}
+
+footer .sns-share {
+    margin: auto;
+    padding-left: 16px;
+    max-width: 640px;
+}
+
+footer a {
+    font-size: 12px;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
 }
 
 .game {

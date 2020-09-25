@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.5" />
     <title>砂漠のひつじ</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/sns.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <div class="game"></div>
+    <main>
+        <div class="game"></div>
+    </main>
+    <footer>
+        <a href="https://github.com/kaku3/the-sheep-in-the-desert/">ソースコード(github)</a>
+    </footer>
 
     <template id="scene-title">
         <div class="scene title">
@@ -51,6 +58,42 @@
         <div id="smoke-{{id}}" class="smoke"></div>
     </template>
 
+
+    <template id="sns-share">
+        <div class="sns-share">
+            <ul class="sns-share__list">
+                <li class="sns-share__item">
+                    <a class="sns-share__btn sns-share__btn--fb"
+                        href="https://www.facebook.com/sharer/sharer.php?u={{ url }}" target="_blank">
+                        <i class="fa fa-facebook fa-big"></i>
+                    </a>
+                </li>
+                <li class="sns-share__item">
+                    <a class="sns-share__btn sns-share__btn--tw"
+                        href='https://twitter.com/intent/tweet?url={{ url }}&text="{{ title }}"'
+                        target="_blank">
+                        <i class="fa fa-twitter fa-big"></i>
+                    </a>
+                </li>
+                <li class="sns-share__item">
+                    <a class="sns-share__btn sns-share__btn--line"
+                        href='http://line.me/R/msg/text/?{{ url }}' target="_blank">LINE</a>
+                </li>
+                <li class="sns-share__item">
+                    <a class="sns-share__btn sns-share__btn--hb"
+                        href="http://b.hatena.ne.jp/add?mode=confirm&url={{ url }}&title={{ title }}"
+                        target="_blank">B!</a>
+                </li>
+                <li class="sns-share__item">
+                    <a class="sns-share__btn sns-share__btn--po"
+                        href="http://getpocket.com/edit?url={{ url }}&title={{ title }}" target="_blank">
+                        <i class="fa fa-get-pocket fa-big"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </template>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
@@ -62,6 +105,12 @@
     <script>
         $(() => {
             Game.create()
+
+            // SNSボタン
+            $('footer').prepend(Handlebars.compile($('template#sns-share').html())({
+                "title": document.title,
+                "url": location.href
+            }))
         })
     </script>
 </body>
