@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.5" />
     <title>砂漠のひつじ</title>
+
+    <!-- pwa: for iOS (only works on Safari) -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="砂漠のひつじ">
+    <link rel="apple-touch-icon" href="pwa/icons/icon-192x192.png">
+
+    <!-- pwa: manifest -->
+    <link rel="manifest" href="pwa/manifest.json">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="css/sns.css">
     <link rel="stylesheet" href="css/fonts.css">
@@ -94,14 +104,17 @@
         </div>
     </template>
 
+    <!-- libraries from CDN -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-    <script src="js/global.js"></script>
-    <script src="js/sheep.js"></script>
-    <script src="js/horn.js"></script>
-    <script src="js/smoke.js"></script>
-    <script src="js/main.js"></script>
+
+    <!-- codes -->
+    <script src="js/global.js?__WB_REVISION__=0.01"></script>
+    <script src="js/sheep.js?__WB_REVISION__=0.01"></script>
+    <script src="js/horn.js?__WB_REVISION__=0.01"></script>
+    <script src="js/smoke.js?__WB_REVISION__=0.01"></script>
+    <script src="js/main.js?__WB_REVISION__=0.01"></script>
     <script>
         $(() => {
             Game.create()
@@ -113,5 +126,6 @@
             }))
         })
     </script>
+    <script src="pwa/main.js"></script>
 </body>
 </html>
