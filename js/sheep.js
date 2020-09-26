@@ -13,12 +13,15 @@ const SHEEP_STATUS = {
     AWAY: 400
 }
 
-class Sheep {
-    static serialIndex = 0
-    static scene = null
-    static sheeps = []
+const Sheep_ = {
+    serialIndex: 0,
+    scene: null,
+    sheeps: [],
+    template: Handlebars.compile($('template#object-sheep').html())
+}
 
-    static template = Handlebars.compile($('template#object-sheep').html())
+
+class Sheep {
 
     constructor(id, x, y) {
 
@@ -32,7 +35,7 @@ class Sheep {
         this.speed = parseInt(Math.random() * 10) * 8 + 120
         this.status = SHEEP_STATUS.APPEAR
 
-        Sheep.scene.append(Sheep.template(this))
+        Sheep_.scene.append(Sheep_.template(this))
 
         let yy = this.y - SHEEP_HEIGHT
         this.tl = gsap.timeline({
@@ -78,19 +81,23 @@ class Sheep {
         const y = parseInt(Math.random() * (FIELD_Y_MAX - FIELD_Y_MIN)) + FIELD_Y_MIN
         const x = parseInt(Math.random() * (FIELD_SIZE_X / 3 - SHEEP_WIDTH) / FIELD_STEP_X) * FIELD_STEP_X + (FIELD_SIZE_X / 4)
 
-        const o = new Sheep(Sheep.serialIndex++, x, y)
+        const o = new Sheep(Sheep_.serialIndex++, x, y)
 
         return o
     }
     static initialize(scene) {
-        Sheep.scene = scene
-        Sheep.serialIndex = 0
-        Sheep.sheeps = []
+        Sheep_.scene = scene
+        Sheep_.serialIndex = 0
+        Sheep_.sheeps = []
     }
     static execute() {
-        if(Sheep.sheeps.length < 5) {
-            Sheep.sheeps.push(Sheep.create())
+        if(Sheep_.sheeps.length < 5) {
+            Sheep_.sheeps.push(Sheep.create())
         }
+    }
+
+    static getSheeps() {
+        return Sheep_.sheeps;
     }
 
     /**
@@ -145,7 +152,7 @@ class Sheep {
                 break
             case SHEEP_STATUS.AWAY:
                 $(self.selector).remove()
-                Sheep.sheeps = Sheep.sheeps.filter(v => v.id != self.id)
+                Sheep_.sheeps = Sheep_.sheeps.filter(v => v.id != self.id)
                 break
         }
     }

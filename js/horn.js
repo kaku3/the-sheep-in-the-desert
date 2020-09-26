@@ -1,9 +1,13 @@
-class Horn {
-    static serialIndex = 0
-    static scene = null
-    static horns = []
+const Horn_ = {
+    serialIndex: 0,
+    scene: null,
+    horns: [],
 
-    static template = Handlebars.compile($('template#object-horn').html())
+    template: Handlebars.compile($('template#object-horn').html())
+}
+
+
+class Horn {
 
     constructor(id, x, y, tx, ty) {
 
@@ -13,7 +17,7 @@ class Horn {
             'shadow': `#horn-shadow-${id}`
         }
 
-        Horn.scene.append(Horn.template(this))
+        Horn_.scene.append(Horn_.template(this))
 
         const d = Math.sqrt(Math.pow(tx - x, 2) + Math.pow((ty - y) * 8, 2))
         const zz = d / 10
@@ -89,7 +93,7 @@ class Horn {
         const zz = (body.position().top + body.height() / 2)
 
         // 当たり判定
-        const sheeps = Sheep.sheeps.filter(o => {
+        const sheeps = Sheep.getSheeps().filter(o => {
             if(!o.isWalk()) {
                 return false
             }
@@ -120,21 +124,21 @@ class Horn {
 
 
     static canShoot() {
-        return Horn.horns.length < 5
+        return Horn_.horns.length < 5
     }
 
     static create(x, y, tx, ty) {
-        const o = new Horn(Horn.serialIndex++, x, y, tx, ty)
+        const o = new Horn(Horn_.serialIndex++, x, y, tx, ty)
 
-        Horn.horns.push(o)
+        Horn_.horns.push(o)
 
         return o
     }
 
     static initialize(scene) {
-        Horn.scene = scene
-        Horn.serialIndex = 0
-        Horn.horns = []
+        Horn_.scene = scene
+        Horn_.serialIndex = 0
+        Horn_.horns = []
     }
 
     static onGsapUpdate(params) {
@@ -149,6 +153,6 @@ class Horn {
         $(self.selector.body).remove()
         $(self.selector.shadow).remove()
 
-        Horn.horns = Horn.horns.filter(v => v.id != self.id)
+        Horn_.horns = Horn_.horns.filter(v => v.id != self.id)
     }
 }

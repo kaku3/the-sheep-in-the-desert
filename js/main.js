@@ -1,3 +1,8 @@
+// iOS safari で static field 動かない
+// https://caniuse.com/?search=static%20field
+// ES2015 の仕様にもない。
+// https://stackoverflow.com/questions/40367392/static-class-property-not-working-with-babel
+
 
 // ゲーム scene 定義
 const SCENE = {
@@ -10,15 +15,18 @@ const SCENE = {
     RESULT_EXEC: 301
 }
 
+const Game_ = {
+    self: null
+}
+
 class Game {
-    static self
 
     static create() {
-        Game.self = new Game()
+        Game_.self = new Game()
     }
 
     static exec() {
-        let self = Game.self
+        let self = Game_.self
         if(self.currentScene != self.nextScene) {
             self.changeScene()
         }

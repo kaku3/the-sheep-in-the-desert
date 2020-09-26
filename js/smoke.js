@@ -1,14 +1,17 @@
-class Smoke {
-    static serialIndex = 0
-    static scene = null
+const Smoke_ = {
+    serialIndex: 0,
+    scene: null,
 
-    static template = Handlebars.compile($('template#object-smoke').html())
+    template: Handlebars.compile($('template#object-smoke').html())
+}
+
+class Smoke {
     
     constructor(id, x, y) {
         this.id = id
         this.selector = `#smoke-${id}`
 
-        Smoke.scene.append(Smoke.template(this))
+        Smoke_.scene.append(Smoke_.template(this))
 
         const o = $(this.selector)
         let ww = o.width() / 2
@@ -28,11 +31,11 @@ class Smoke {
     }
 
     static create(x, y) {
-        new Smoke(Smoke.serialIndex++, x, y)
+        new Smoke(Smoke_.serialIndex++, x, y)
     }
 
     static initialize(scene) {
-        Smoke.scene = scene
-        Smoke.serialIndex = 0
+        Smoke_.scene = scene
+        Smoke_.serialIndex = 0
     }
 }
