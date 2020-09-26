@@ -9,24 +9,24 @@ const precacheController = new workbox.precaching.PrecacheController();
 console.log('sw', location.href)
 const baseUrl = location.href.replace(/\/sw.js$/, '');
 const urls = [
-    { url:'/index.html', revision: '0.01' },
-    { url:'/css/fonts.css', revision: '0.01' },
-    { url:'/css/main.css', revision: '0.01' },
-    { url:'/css/sns.css', revision: '0.01' },
-    { url:'/font/VT323/OFL.txt', revision: '0.01' },
-    { url:'/font/VT323/VT323-Regular.ttf', revision: '0.01' },
-    { url:'/image/bg.png', revision: '0.01' },
-    { url:'/image/horn.png', revision: '0.01' },
-    { url:'/image/player-attack.png', revision: '0.01' },
-    { url:'/image/player-stand.png', revision: '0.01' },
-    { url:'/image/sheep.png', revision: '0.01' },
-    { url:'/image/sight.png', revision: '0.01' },
-    { url:'/image/smoke.png', revision: '0.01' },
-    { url:'/js/global.js', revision: '0.01' },
-    { url:'/js/horn.js', revision: '0.01' },
-    { url:'/js/main.js', revision: '0.01' },
-    { url:'/js/sheep.js', revision: '0.01' },
-    { url:'/js/smoke.js', revision: '0.01' }
+    { url:'/index.html' },
+    { url:'/css/fonts.css' },
+    { url:'/css/main.css' },
+    { url:'/css/sns.css' },
+    { url:'/font/VT323/OFL.txt' },
+    { url:'/font/VT323/VT323-Regular.ttf' },
+    { url:'/image/bg.png' },
+    { url:'/image/horn.png' },
+    { url:'/image/player-attack.png' },
+    { url:'/image/player-stand.png' },
+    { url:'/image/sheep.png' },
+    { url:'/image/sight.png' },
+    { url:'/image/smoke.png' },
+    { url:'/js/global.js' },
+    { url:'/js/horn.js' },
+    { url:'/js/main.js' },
+    { url:'/js/sheep.js' },
+    { url:'/js/smoke.js' }
 ].map(o => {
     o.url = baseUrl + o.url;
     return o;
