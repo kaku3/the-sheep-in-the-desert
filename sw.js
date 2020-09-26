@@ -6,27 +6,27 @@ workbox.loadModule('workbox-strategies');
 
 const precacheController = new workbox.precaching.PrecacheController();
 
-console.log('sw', location.href)
+const REVISION = '0.01'
 const baseUrl = location.href.replace(/\/sw.js$/, '');
 const urls = [
-    { url:'/index.html' },
-    { url:'/css/fonts.css' },
-    { url:'/css/main.css' },
-    { url:'/css/sns.css' },
-    { url:'/font/VT323/OFL.txt' },
-    { url:'/font/VT323/VT323-Regular.ttf' },
-    { url:'/image/bg.png' },
-    { url:'/image/horn.png' },
-    { url:'/image/player-attack.png' },
-    { url:'/image/player-stand.png' },
-    { url:'/image/sheep.png' },
-    { url:'/image/sight.png' },
-    { url:'/image/smoke.png' },
-    { url:'/js/global.js' },
-    { url:'/js/horn.js' },
-    { url:'/js/main.js' },
-    { url:'/js/sheep.js' },
-    { url:'/js/smoke.js' }
+    { url:'/index.html', revision: REVISION },
+    { url:'/css/fonts.css', revision: REVISION },
+    { url:'/css/main.css', revision: REVISION },
+    { url:'/css/sns.css', revision: REVISION },
+    { url:'/font/VT323/OFL.txt', revision: REVISION },
+    { url:'/font/VT323/VT323-Regular.ttf', revision: REVISION },
+    { url:'/image/bg.png', revision: REVISION },
+    { url:'/image/horn.png', revision: REVISION },
+    { url:'/image/player-attack.png', revision: REVISION },
+    { url:'/image/player-stand.png', revision: REVISION },
+    { url:'/image/sheep.png', revision: REVISION },
+    { url:'/image/sight.png', revision: REVISION },
+    { url:'/image/smoke.png', revision: REVISION },
+    { url:'/js/global.js', revision: REVISION },
+    { url:'/js/horn.js', revision: REVISION },
+    { url:'/js/main.js', revision: REVISION },
+    { url:'/js/sheep.js', revision: REVISION },
+    { url:'/js/smoke.js', revision: REVISION }
 ].map(o => {
     o.url = baseUrl + o.url;
     return o;
