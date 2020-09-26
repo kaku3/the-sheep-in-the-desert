@@ -11,8 +11,6 @@ const urls = [
     { url:'/css/fonts.css', revision: '0.01' },
     { url:'/css/main.css', revision: '0.01' },
     { url:'/css/sns.css', revision: '0.01' },
-    { url:'/docs/image/the-sheeps-in-the-desert.gif', revision: '0.01' },
-    { url:'/docs/image/the-sheeps-in-the-desert.png', revision: '0.01' },
     { url:'/font/VT323/OFL.txt', revision: '0.01' },
     { url:'/font/VT323/VT323-Regular.ttf', revision: '0.01' },
     { url:'/image/bg.png', revision: '0.01' },
