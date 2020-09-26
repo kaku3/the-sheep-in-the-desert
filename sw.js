@@ -1,3 +1,5 @@
+// pwa/ 以下に pwa 関連のファイルをまとめたかったが、service worker はルートに配置する必要がある。
+
 // workbox の import
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 workbox.loadModule('workbox-strategies');
@@ -5,7 +7,7 @@ workbox.loadModule('workbox-strategies');
 const precacheController = new workbox.precaching.PrecacheController();
 
 console.log('sw', location.href)
-const baseUrl = location.href.replace(/\/pwa\/sw.js$/, '');
+const baseUrl = location.href.replace(/\/sw.js$/, '');
 const urls = [
     { url:'/index.html', revision: '0.01' },
     { url:'/css/fonts.css', revision: '0.01' },
