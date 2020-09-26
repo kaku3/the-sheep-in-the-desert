@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.5, user-scalable=no" />
     <title>砂漠のひつじ</title>
+    <meta name="description" content="ミニゲームプログラム開発で学ぶ業務アプリ開発、オブジェクト指向、PWA。">
 
     <!-- pwa: for iOS (only works on Safari) -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -80,7 +81,7 @@
                 </li>
                 <li class="sns-share__item">
                     <a class="sns-share__btn sns-share__btn--tw"
-                        href='https://twitter.com/intent/tweet?url={{ url }}&text="{{ title }}"'
+                        href='https://twitter.com/intent/tweet?url={{ url }}&text={{ title }} {{ description }}'
                         target="_blank">
                         <i class="fa fa-twitter fa-big"></i>
                     </a>
@@ -122,7 +123,8 @@
             // SNSボタン
             $('footer').prepend(Handlebars.compile($('template#sns-share').html())({
                 "title": document.title,
-                "url": location.href
+                "url": location.href,
+                "description": $('meta[name=description]').attr('content')
             }))
         })
     </script>
