@@ -33,6 +33,11 @@ class Game {
         self.execScene()
     }
 
+    static addScore(score) {
+        Game_.self.score += score
+    }
+
+
     constructor() {
         this.currentScene = SCENE.INIT
         this.setNextScene(SCENE.GAME_INIT)
@@ -111,7 +116,7 @@ class Game {
             }
         })
         tl.to('.scene.title .title2', {
-            duration: 2,
+            duration: 1,
             text: {
                 value: "in the desert"
             }
@@ -130,6 +135,7 @@ class Game {
         Sheep.initialize(scene)
         Horn.initialize(scene)
         Smoke.initialize(scene)
+        ScoreEffect.initialize(scene)
 
         this.initSight(game)
 

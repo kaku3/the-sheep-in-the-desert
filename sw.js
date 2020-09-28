@@ -22,9 +22,10 @@ const urls = [
     { url:'/image/sheep.png', revision: REVISION },
     { url:'/image/sight.png', revision: REVISION },
     { url:'/image/smoke.png', revision: REVISION },
+    { url:'/js/game.js', revision: REVISION },
     { url:'/js/global.js', revision: REVISION },
     { url:'/js/horn.js', revision: REVISION },
-    { url:'/js/main.js', revision: REVISION },
+    { url:'/js/score-effect.js', revision: REVISION }
     { url:'/js/sheep.js', revision: REVISION },
     { url:'/js/smoke.js', revision: REVISION }
 ].map(o => {

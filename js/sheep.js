@@ -64,7 +64,8 @@ class Sheep {
     isWalk() {
         return this.status == SHEEP_STATUS.WALK
     }
-    setHit() {
+    setHit(score) {
+        this.score = score
         this.tl.kill()
         this.tl = gsap.timeline({
             onComplete: Sheep.onGsapComplete,
@@ -145,7 +146,7 @@ class Sheep {
                 })
                 self.tl.to(self.selector, {
                     x: -FIELD_SIZE_X,
-                    duration: 0.5,
+                    duration: 0.7,
                     ease: Power2.easeOut
                 })
                 self.status = SHEEP_STATUS.AWAY

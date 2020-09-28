@@ -147,3 +147,9 @@ footer ul {
 
     pointer-events: none;
 }
+
+.score-effect {
+    position: absolute;
+    font-size: 24px;
+    z-index: 1000;
+}

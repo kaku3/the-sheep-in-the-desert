@@ -64,7 +64,9 @@ class Horn {
         // 最背面
         $(this.selector.shadow).css('z-index', 1)
     }
-    setHit() {
+    setHit(score) {
+        this.score = score
+
         this.tl.kill()
         this.tlRotate.kill()
         this.tlShadow.kill()
@@ -78,14 +80,14 @@ class Horn {
         this.tl.to(this.selector.body, { opacity: 1, duration: 0.5 })
         this.tl.to(this.selector.body, {
             x: -FIELD_SIZE_X,
-            duration: 0.5,
+            duration: 0.7,
             ease: Power2.easeOut
         })
     }
     exec() {
         const body = $(this.selector.body)
         const shadow = $(this.selector.shadow)
-        const yy = parseInt(shadow.css('top') + shadow.height() / 2)
+        const yy = parseInt(shadow.position().top + shadow.height() / 2)
 
 
         // 高さ方向を zとする。
@@ -113,18 +115,27 @@ class Horn {
         })
         const sheep = (sheeps.length > 0) ? sheeps[0] : null
         if(!sheep) {
-            body.css('z-index', yy)
+            body.css('z-index', shadow.position().top - 64)
             return
         }
+
+        // score 処理
+        const rect = sheep.getRect()
+        let score = 100 - Math.sqrt(Math.pow(xx - (rect.x0 + 64), 2) + Math.pow(zz - rect.y0, 2))
+        score = Math.max(1, parseInt(score))
+        Game.addScore(score)
+        ScoreEffect.create(xx, zz, score)
+
+        // hit 処理
         body.css('z-index', $(sheep.selector).css('z-index') + 1)
 
-        sheep.setHit()
-        this.setHit()
+        sheep.setHit(score)
+        this.setHit(score)
     }
 
 
     static canShoot() {
-        return Horn_.horns.length < 5
+        return Horn_.horns.length < 4
     }
 
     static create(x, y, tx, ty) {
