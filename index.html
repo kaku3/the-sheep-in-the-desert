@@ -41,8 +41,8 @@
     <template id="scene-title">
         <div class="scene title">
             <h1>
-                <div class="title1">The Sheeps</div>
-                <div class="title2">in the desart</div>
+                <div class="title1"></div>
+                <div class="title2"></div>
             </h1>
             <div class="start">
                 Click to Play
@@ -119,6 +119,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/TextPlugin.min.js"></script>
 
     <!-- codes -->
     <script src="js/global.js?__WB_REVISION__=0.01"></script>
@@ -128,6 +129,7 @@
     <script src="js/main.js?__WB_REVISION__=0.01"></script>
     <script>
         $(() => {
+            gsap.registerPlugin(TextPlugin);
             Game.create()
 
             // SNSボタン

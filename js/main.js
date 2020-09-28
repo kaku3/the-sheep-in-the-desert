@@ -92,13 +92,31 @@ class Game {
     initTitle() {
         const game = this.initScene('template#scene-title')
 
-        const t = gsap.timeline({ repeat: -1, yoyo: true })
-        t.to('.start', { opacity: 0, duration: .5})
+        gsap.set('.start', { opacity: 0})
 
-        $('.scene.title', game).on('click', (e) => {
-            this.setNextScene(SCENE.GAME_INIT)
+        const tl = gsap.timeline({
+            onComplete: (params) => {
+                const tl = gsap.timeline({ repeat: -1, yoyo: true })
+                tl.to('.start', { opacity: 1, duration: .5})
+        
+                $('.scene.title', game).on('click', (e) => {
+                    this.setNextScene(SCENE.GAME_INIT)
+                })
+            }
         })
-
+        tl.to('.scene.title .title1', {
+            duration: 2,
+            text: {
+                value: "The Sheeps"
+            }
+        })
+        tl.to('.scene.title .title2', {
+            duration: 2,
+            text: {
+                value: "in the desert"
+            }
+        })
+        
         this.setNextScene(SCENE.TITLE_EXEC, true)
     }
 
