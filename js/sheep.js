@@ -92,7 +92,7 @@ class Sheep {
         Sheep_.sheeps = []
     }
     static execute() {
-        const count = Game.isInBonusTime() ? 20 : 5
+        const count = ((Game.getTime() > 5 * 1000) ? 2 : 6) + parseInt((GAME_TIME - Game.getTime()) / (4 * 1000)) 
         if(Sheep_.sheeps.length < count) {
             Sheep_.sheeps.push(Sheep.create())
         }

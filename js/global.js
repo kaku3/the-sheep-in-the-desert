@@ -3,9 +3,6 @@ const FPS = parseInt(1000 / 30)
 // １ゲーム時間(ms)
 const GAME_TIME = 30 * 1000
 
-// bonus time
-const GAME_TIME_BONUS = 10 * 1000
-
 const FIELD_SIZE_X = 640
 
 // 羊が出現する範囲

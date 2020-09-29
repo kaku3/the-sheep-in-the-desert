@@ -105,6 +105,8 @@ footer ul {
 
 .scene.game .console > * {
     padding: .5rem;
+
+    pointer-events: none;
 }
 
 .scene.game .console > * > label {

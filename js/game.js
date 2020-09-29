@@ -37,8 +37,8 @@ class Game {
         Game_.self.score += score
     }
 
-    static isInBonusTime() {
-        return Game_.self.time <= GAME_TIME_BONUS
+    static getTime() {
+        return Game_.self.time
     }
 
 
@@ -154,16 +154,24 @@ class Game {
     }
 
     initResult() {
-        const game = this.initScene('template#scene-result')
+        const tl = gsap.timeline({
+            onComplete: (params) => {
+                const game = this.initScene('template#scene-result')
 
-        $('.scene.result .button.title', game).on('click', (e) => {
-            this.setNextScene(SCENE.TITLE_INIT)
+                $('.scene.result .button.title', game).on('click', (e) => {
+                    this.setNextScene(SCENE.TITLE_INIT)
+                })
+                $('.scene.result .button.again', game).on('click', (e) => {
+                    this.setNextScene(SCENE.GAME_INIT)
+                })
+        
+                this.setNextScene(SCENE.RESULT_EXEC, true)
+            }
         })
-        $('.scene.result .button.again', game).on('click', (e) => {
-            this.setNextScene(SCENE.GAME_INIT)
-        })
+        tl.to('.game .scene.game', { opacity: 0, duration: 3})
 
-        this.setNextScene(SCENE.RESULT_EXEC, true)
+        gsap.to('.game > .player', { opacity: 0, scaleY: 2, duration: 0.5 })
+        gsap.to('.game > .sight', { opacity: 0, scale: 5, duration: 0.5 })
     }
 
     /**
@@ -180,7 +188,9 @@ class Game {
             })
         })
         scene.on('click', (e) => {
-            this.shot(e.offsetX, e.offsetY)
+            if(this.currentScene == SCENE.GAME_EXEC) {
+                this.shot(e.offsetX, e.offsetY)
+            }
         })
     }
     /**
