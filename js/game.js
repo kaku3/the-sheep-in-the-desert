@@ -158,10 +158,19 @@ class Game {
             onComplete: (params) => {
                 const game = this.initScene('template#scene-result')
 
-                $('.scene.result .button.title', game).on('click', (e) => {
+                const title = '.scene.result .button.title'
+                const again = '.scene.result .button.again'
+
+                gsap.timeline({ repeat: -1, yoyo: true, })
+                    .to(title, { scale: 1.1, duration: 1})
+
+                gsap.timeline({ repeat: -1, yoyo: true, })
+                    .to(again, { scale: 1.1, duration: 1})
+
+                $(title).on('click', (e) => {
                     this.setNextScene(SCENE.TITLE_INIT)
                 })
-                $('.scene.result .button.again', game).on('click', (e) => {
+                $(again).on('click', (e) => {
                     this.setNextScene(SCENE.GAME_INIT)
                 })
         
