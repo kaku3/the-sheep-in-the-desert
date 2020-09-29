@@ -37,6 +37,10 @@ class Game {
         Game_.self.score += score
     }
 
+    static isInBonusTime() {
+        return Game_.self.time <= GAME_TIME_BONUS
+    }
+
 
     constructor() {
         this.currentScene = SCENE.INIT
@@ -66,12 +70,11 @@ class Game {
             case SCENE.TITLE_INIT:
                 this.initTitle()
                 break
-            case SCENE.TITLE_EXEC:
-                break
             case SCENE.GAME_INIT:
                 this.initGame()
                 break
-            case SCENE.GAME_EXEC:
+            case SCENE.RESULT_INIT:
+                this.initResult()
                 break
         }
     }
@@ -149,6 +152,20 @@ class Game {
 
         this.setNextScene(SCENE.GAME_EXEC, true)
     }
+
+    initResult() {
+        const game = this.initScene('template#scene-result')
+
+        $('.scene.result .button.title', game).on('click', (e) => {
+            this.setNextScene(SCENE.TITLE_INIT)
+        })
+        $('.scene.result .button.again', game).on('click', (e) => {
+            this.setNextScene(SCENE.GAME_INIT)
+        })
+
+        this.setNextScene(SCENE.RESULT_EXEC, true)
+    }
+
     /**
      * 照準カーソル初期化
      * @param {*} game 

@@ -135,7 +135,7 @@ class Horn {
 
 
     static canShoot() {
-        return Horn_.horns.length < 4
+        return Horn_.horns.length < 10
     }
 
     static create(x, y, tx, ty) {

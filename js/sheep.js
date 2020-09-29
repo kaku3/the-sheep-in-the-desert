@@ -92,7 +92,8 @@ class Sheep {
         Sheep_.sheeps = []
     }
     static execute() {
-        if(Sheep_.sheeps.length < 5) {
+        const count = Game.isInBonusTime() ? 20 : 5
+        if(Sheep_.sheeps.length < count) {
             Sheep_.sheeps.push(Sheep.create())
         }
     }
