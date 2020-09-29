@@ -33,6 +33,10 @@ js用templateライブラリ。html テンプレートにダブルブラケッ�
 ツノ砲とヒツジの当たり判定
 - tasks/smoke_effect
 煙エフェクト
+- tasks/score
+スコア処理
+- tasks/pwa
+PWA化
 
 ## 未実装
 - スコア処理
@@ -44,9 +48,15 @@ js用templateライブラリ。html テンプレートにダブルブラケッ�
 ## 遊び方
 マウスカーソルで照準を操作し、ヒツジのコメカミめがけてツノ砲を発射
 
-## オブジェクト指向について
+## 解説など
 
 Qiitaに記事書きましたので、よければ見てください。
 
+### オブジェクト指向について
+
 - [ゲームで理解するオブジェクト指向設計の基本](https://qiita.com/kaku3/items/a875fe1c098509b1fccd)
 - [ゲームで身につけるオブジェクト指向設計(実装編)](https://qiita.com/kaku3/items/f482d48676eb7ea9c9a6)
+
+### PWAについて
+
+- [通知がしたいだけならPWAでいいじゃない【iOS非対応】](https://qiita.com/kaku3/items/9d822fa76905452fae36)
