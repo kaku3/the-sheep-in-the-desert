@@ -1,4 +1,5 @@
 body {
+    margin: 0;
     padding: 0;
     text-align: center;
     background: #eee;
@@ -34,7 +35,7 @@ footer ul {
     margin: auto;
     width: 640px;
     height: 640px;
-    background-image: url("../image/bg.png?__WB_REVISION__=0.02");
+    background-image: url("../image/bg.png?__WB_REVISION__=0.03");
     background-size: cover;
     overflow: hidden;
 
@@ -84,12 +85,12 @@ footer ul {
     width: 64px;
     height: 128px;
     z-index: 1000;
-    background-image: url("../image/player-stand.png?__WB_REVISION__=0.02");
+    background-image: url("../image/player-stand.png?__WB_REVISION__=0.03");
 
     pointer-events: none;
 }
 .game > .player.attack {
-    background-image: url("../image/player-attack.png?__WB_REVISION__=0.02");
+    background-image: url("../image/player-attack.png?__WB_REVISION__=0.03");
 }
 
 .game > .sight {
@@ -97,7 +98,7 @@ footer ul {
     width: 64px;
     height: 64px;
     z-index: 10000;
-    background-image: url("../image/sight.png?__WB_REVISION__=0.02");
+    background-image: url("../image/sight.png?__WB_REVISION__=0.03");
 
     pointer-events: none;
 }
@@ -117,7 +118,7 @@ footer ul {
     position: absolute;
     width: 192px;
     height: 96px;
-    background-image: url("../image/sheep.png?__WB_REVISION__=0.02");
+    background-image: url("../image/sheep.png?__WB_REVISION__=0.03");
 
     pointer-events: none;
 }
@@ -126,7 +127,7 @@ footer ul {
     position: absolute;
     width: 36px;
     height: 36px;
-    background-image: url("../image/horn.png?__WB_REVISION__=0.02");
+    background-image: url("../image/horn.png?__WB_REVISION__=0.03");
 
     pointer-events: none;
 }
@@ -145,7 +146,7 @@ footer ul {
     position: absolute;
     width: 40px;
     height: 40px;
-    background-image: url("../image/smoke.png?__WB_REVISION__=0.02");
+    background-image: url("../image/smoke.png?__WB_REVISION__=0.03");
 
     pointer-events: none;
 }
