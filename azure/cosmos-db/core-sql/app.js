@@ -72,7 +72,7 @@ async function upsertItems(itemBodies) {
   const ps = itemBodies.map(body => items.upsert(body))
   await Promise.all(ps)
 
-  console.log(`Created items : `, itemBodies)
+  console.log(`upserted items : `, itemBodies.map(o => o.id))
 }
 
 /**
@@ -94,8 +94,8 @@ async function obtainSequence(id) {
   rs[0].no++
   await upsertItems(rs)
 
-  console.log(`- obtainSequence(${id})`, rs[0].no)
   console.groupEnd()
+  console.log(`- obtainSequence(${id})`, rs[0].no)
   return rs[0].no
 }
 
@@ -152,8 +152,8 @@ async function getHiScores(count) {
   const query = client.database(databaseId).container(containerId).items.query(q)
   const { resources: rs } = await query.fetchAll()
 
-  console.log(`- getHiScores(${count})`, rs)
   console.groupEnd()
+  console.log(`- getHiScores(${count})`)
   return rs
 }
 
@@ -177,8 +177,8 @@ async function main() {
     // await scaleContainer()
     // await upsertItems(config.sequences)
     await insertDefaultHiScores()
-    await getHiScores(10)
-
+    const scores = await getHiScores(10)
+    console.table(scores)
   } catch(error) {
     console.error(error)
   }
