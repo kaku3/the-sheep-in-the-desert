@@ -25,3 +25,4 @@ exports.updateHiScores = functions.firestore
     console.error(err)
   })
 })
+
