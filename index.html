@@ -25,15 +25,38 @@
     <!-- pwa: manifest -->
     <link rel="manifest" href="manifest.json">
 
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&family=VT323&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="css/sns.css?__WB_REVISION__=0.03">
-    <link rel="stylesheet" href="css/fonts.css?__WB_REVISION__=0.03">
     <link rel="stylesheet" href="css/main.css?__WB_REVISION__=0.03">
+
+    <script src="https://www.gstatic.com/firebasejs/ui/4.7.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.0/firebase-ui-auth.css" />
 </head>
 <body>
+    <!-- firebase : versionはコンパネのバージョンを信用するのがよさそう。-->
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+
+    <!-- 利用したい機能を追加 -->
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+
+    <!-- 初期化スクリプト -->
+    <script src="./firebase/config.dev.js"></script>
+    <script src="./firebase/init.js"></script>
+    <script src="./firebase/auth.js"></script>
+    <!-- firebase -->
+    <div id="firebaseui-auth-container"></div>
+
+    <div class="sns-container"></div>
+    <h1>砂漠のひつじ</h1>
     <main>
         <div class="game"></div>
     </main>
+    <div class="sns-container"></div>
     <footer>
         <a href="https://github.com/kaku3/the-sheep-in-the-desert/">ソースコード(github)</a>
     </footer>
@@ -149,7 +172,7 @@
             Game.create()
 
             // SNSボタン
-            $('footer').prepend(Handlebars.compile($('template#sns-share').html())({
+            $('.sns-container').prepend(Handlebars.compile($('template#sns-share').html())({
                 "title": document.title,
                 "url": location.href,
                 "description": $('meta[name=description]').attr('content')
