@@ -1,161 +1,234 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.5, user-scalable=no" />
-    <title>砂漠のひつじ</title>
-    <meta name="description" content="ミニゲームプログラム開発で学ぶ業務アプリ開発、PWA、SNSシェア、オブジェクト指向。">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.5, user-scalable=no" />
+  <title>砂漠のひつじ</title>
+  <meta name="description" content="ミニゲームプログラム開発で学ぶ業務アプリ開発、PWA、SNSシェア、オブジェクト指向。">
 
-    <!-- ogp -->
-    <meta property="og:url" content="https://kaku3.github.io/the-sheep-in-the-desert/" />
-    <meta property="og:title" content="砂漠のひつじ" />
-    <meta property="og:description" content="ミニゲームプログラム開発で学ぶ業務アプリ開発、PWA、SNSシェア、オブジェクト指向。" />
-    <meta property="og:image" content="https://kaku3.github.io/the-sheep-in-the-desert/docs/image/the-sheeps-in-the-desert.png" />
+  <!-- ogp -->
+  <meta property="og:url" content="https://kaku3.github.io/the-sheep-in-the-desert/" />
+  <meta property="og:title" content="砂漠のひつじ" />
+  <meta property="og:description" content="ミニゲームプログラム開発で学ぶ業務アプリ開発、PWA、SNSシェア、オブジェクト指向。" />
+  <meta property="og:image"
+    content="https://kaku3.github.io/the-sheep-in-the-desert/docs/image/the-sheeps-in-the-desert.png" />
 
-    <!-- twitter card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@kaku3" />
+  <!-- twitter card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@kaku3" />
 
-    <!-- pwa: for iOS (only works on Safari) -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="砂漠のひつじ">
-    <link rel="apple-touch-icon" href="pwa/icons/icon-192x192.png">
+  <!-- pwa: for iOS (only works on Safari) -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="砂漠のひつじ">
+  <link rel="apple-touch-icon" href="pwa/icons/icon-192x192.png">
 
-    <!-- pwa: manifest -->
-    <link rel="manifest" href="manifest.json">
+  <!-- pwa: manifest -->
+  <link rel="manifest" href="manifest.json">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/sns.css?__WB_REVISION__=0.03">
-    <link rel="stylesheet" href="css/fonts.css?__WB_REVISION__=0.03">
-    <link rel="stylesheet" href="css/main.css?__WB_REVISION__=0.03">
+  <!-- google font -->
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&family=VT323&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/sns.css?__WB_REVISION__=0.04">
+  <link rel="stylesheet" href="css/main.css?__WB_REVISION__=0.04">
+
+  <script src="https://www.gstatic.com/firebasejs/ui/4.7.0/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.0/firebase-ui-auth.css" />
 </head>
+
 <body>
-    <main>
-        <div class="game"></div>
-    </main>
-    <footer>
-        <a href="https://github.com/kaku3/the-sheep-in-the-desert/">ソースコード(github)</a>
-    </footer>
+  <!-- firebase : versionはコンパネのバージョンを信用するのがよさそう。-->
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
 
-    <template id="scene-title">
-        <div class="scene title">
-            <h1>
-                <div class="title1"></div>
-                <div class="title2"></div>
-            </h1>
-            <div class="start">
-                Click to Play
-            </div>
+  <!-- 利用したい機能を追加 -->
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+
+  <!-- 初期化スクリプト -->
+  <script src="./firebase/config.js"></script>
+  <script src="./firebase/init.js"></script>
+  <script src="./firebase/auth.js"></script>
+
+  <header>
+    <div class="sns-container"></div>
+    <h1>砂漠のひつじ</h1>
+    <p>Throw the horns towards the sheeps head.</p>
+  </header>
+  <main>
+    <div class="game"></div>
+  </main>
+  <div id="hiscores-container">
+    <h2>HI SCORES</h2>
+    <table>
+      <tbody id="hiscores-table-tbody"></tbody>
+    </table>
+  </div>
+  <div class="sns-container"></div>
+  <footer>
+    <a href="https://github.com/kaku3/the-sheep-in-the-desert/">ソースコード(github)</a>
+  </footer>
+
+  <!-- templates -->
+  <template id="scene-title">
+    <div class="scene title">
+      <h1>
+        <div class="title1"></div>
+        <div class="title2"></div>
+      </h1>
+      <div class="start">
+        Click to Play
+      </div>
+    </div>
+  </template>
+  <template id="scene-game">
+    <div class="scene game">
+      <div class="console">
+        <div class="score">
+          <label for="score-value">SCORE</label>
+          <div class="score-value">0</div>
         </div>
-    </template>
-    <template id="scene-game">
-        <div class="scene game">
-            <div class="console">
-                <div class="score">
-                    <label for="score-value">SCORE</label>
-                    <div class="score-value">0</div>
-                </div>
-                <div class="time">
-                    <label for="time-value">TIME</label>
-                    <div class="time-value">0</div>
-                </div>
-            </div>
+        <div class="time">
+          <label for="time-value">TIME</label>
+          <div class="time-value">0</div>
         </div>
-        <div class="player"></div>
-        <div class="sight"></div>
-    </template>
-    <template id="scene-result">
-        <div class="scene result">
-            <h1>
-                <div class="title1">RESULT</div>
-            </h1>
-            <div class="buttons">
-                <div class="button title">Title</div>
-                <div class="button again">Again</div>
-            </div>
-        </div>
-    </template>
-    
-    <template id="object-sheep">
-        <div id="sheep-{{id}}" class="sheep"></div>
-    </template>
+      </div>
+    </div>
+    <div class="player"></div>
+    <div class="sight"></div>
+  </template>
+  <template id="scene-result">
+    <div class="scene result">
+      <h1>
+        <div class="title1">RESULT</div>
+      </h1>
+      <div class="score">{{score}}</div>
+      {{#if isNewRecord}}
+      <div class="new-record">NEW RECORD</div>
+      {{/if}}
 
-    <template id="object-horn">
-        <div id="horn-shadow-{{id}}" class="horn shadow"></div>
-        <div id="horn-body-{{id}}" class="horn body"></div>
-    </template>
+      {{#if isRanked}}
+      <div class="ranked">Ranked #{{rank}}</div>
+      <div id="register-container">
+        <input type="text" id="name" maxlength="8" size="18" value="{{displayName}}">
+        <button class="register">Register</button>
+      </div>
 
-    <template id="object-smoke">
-        <div id="smoke-{{id}}" class="smoke"></div>
-    </template>
+      {{#if notSignin}}
+      <div id="signin-container">
+        <p class="caution">* Need account to register score.</p>
+        <button class="signin">Sign in</button>
+      </div>
+      {{/if}}
 
-    <template id="object-score-effect">
-        <div id="score-effect-{{id}}" class="score-effect">{{score}}</div>
-    </template>
+      {{/if}}
+
+      <div class="buttons">
+        <div class="button title">Title</div>
+        <div class="button again">Again</div>
+      </div>
+      <!-- firebase : score 登録したい人だけ登録-->
+      <div id="firebaseui-auth-container">
+        <i id="firebaseui-auth-container-close" class='fa fa-window-close fa-lg'></i><br/>
+      </div>
+    </div>
+  </template>
+  <template id="object-sheep">
+    <div id="sheep-{{id}}" class="sheep"></div>
+  </template>
+
+  <template id="object-horn">
+    <div id="horn-shadow-{{id}}" class="horn shadow"></div>
+    <div id="horn-body-{{id}}" class="horn body"></div>
+  </template>
+
+  <template id="object-smoke">
+    <div id="smoke-{{id}}" class="smoke"></div>
+  </template>
+
+  <template id="object-score-effect">
+    <div id="score-effect-{{id}}" class="score-effect">{{score}}</div>
+  </template>
+
+  <template id="hiscores-table-tbody-row">
+    <tr>
+      <td>{{rank}}</td>
+      <td>{{name}}</td>
+      <td>{{score}}</td>
+    </tr>
+  </template>
 
 
-    <template id="sns-share">
-        <div class="sns-share">
-            <ul class="sns-share__list">
-                <li class="sns-share__item">
-                    <a class="sns-share__btn sns-share__btn--fb"
-                        href="https://www.facebook.com/sharer/sharer.php?u={{ url }}" target="_blank">
-                        <i class="fa fa-facebook fa-big"></i>
-                    </a>
-                </li>
-                <li class="sns-share__item">
-                    <a class="sns-share__btn sns-share__btn--tw"
-                        href='https://twitter.com/intent/tweet?url={{ url }}'
-                        target="_blank">
-                        <i class="fa fa-twitter fa-big"></i>
-                    </a>
-                </li>
-                <li class="sns-share__item">
-                    <a class="sns-share__btn sns-share__btn--line"
-                        href='http://line.me/R/msg/text/?{{ url }}' target="_blank">LINE</a>
-                </li>
-                <li class="sns-share__item">
-                    <a class="sns-share__btn sns-share__btn--hb"
-                        href="http://b.hatena.ne.jp/add?mode=confirm&url={{ url }}&title={{ title }}"
-                        target="_blank">B!</a>
-                </li>
-                <li class="sns-share__item">
-                    <a class="sns-share__btn sns-share__btn--po"
-                        href="http://getpocket.com/edit?url={{ url }}&title={{ title }}" target="_blank">
-                        <i class="fa fa-get-pocket fa-big"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </template>
+  <template id="sns-share">
+    <div class="sns-share">
+      <ul class="sns-share__list">
+        <li class="sns-share__item">
+          <a class="sns-share__btn sns-share__btn--fb" href="https://www.facebook.com/sharer/sharer.php?u={{ url }}"
+            target="_blank">
+            <i class="fa fa-facebook fa-big"></i>
+          </a>
+        </li>
+        <li class="sns-share__item">
+          <a class="sns-share__btn sns-share__btn--tw" href='https://twitter.com/intent/tweet?url={{ url }}'
+            target="_blank">
+            <i class="fa fa-twitter fa-big"></i>
+          </a>
+        </li>
+        <li class="sns-share__item">
+          <a class="sns-share__btn sns-share__btn--line" href='http://line.me/R/msg/text/?{{ url }}'
+            target="_blank">LINE</a>
+        </li>
+        <li class="sns-share__item">
+          <a class="sns-share__btn sns-share__btn--hb"
+            href="http://b.hatena.ne.jp/add?mode=confirm&url={{ url }}&title={{ title }}" target="_blank">B!</a>
+        </li>
+        <li class="sns-share__item">
+          <a class="sns-share__btn sns-share__btn--po" href="http://getpocket.com/edit?url={{ url }}&title={{ title }}"
+            target="_blank">
+            <i class="fa fa-get-pocket fa-big"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </template>
+  <!-- templates -->
 
-    <!-- libraries from CDN -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/TextPlugin.min.js"></script>
+  <!-- libraries from CDN -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/TextPlugin.min.js"></script>
 
-    <!-- codes -->
-    <script src="js/global.js?__WB_REVISION__=0.03"></script>
-    <script src="js/sheep.js?__WB_REVISION__=0.03"></script>
-    <script src="js/horn.js?__WB_REVISION__=0.03"></script>
-    <script src="js/smoke.js?__WB_REVISION__=0.03"></script>
-    <script src="js/score-effect.js?__WB_REVISION__=0.03"></script>
-    <script src="js/game.js?__WB_REVISION__=0.03"></script>
-    <script>
-        $(() => {
-            gsap.registerPlugin(TextPlugin);
-            Game.create()
+  <!-- codes -->
+  <script src="js/global.js?__WB_REVISION__=0.04"></script>
+  <script src="js/sheep.js?__WB_REVISION__=0.04"></script>
+  <script src="js/horn.js?__WB_REVISION__=0.04"></script>
+  <script src="js/smoke.js?__WB_REVISION__=0.04"></script>
+  <script src="js/score-effect.js?__WB_REVISION__=0.04"></script>
+  <script src="js/game.js?__WB_REVISION__=0.04"></script>
+  <script>
+    $(() => {
+      gsap.registerPlugin(TextPlugin);
+      Game.create();
+      Game.buildHiScores();
 
-            // SNSボタン
-            $('footer').prepend(Handlebars.compile($('template#sns-share').html())({
-                "title": document.title,
-                "url": location.href,
-                "description": $('meta[name=description]').attr('content')
-            }))
-        })
-    </script>
-    <script src="pwa/main.js"></script>
+      buildSnsButtons();
+    })
+
+    function buildSnsButtons() {
+      $('.sns-container').prepend(Handlebars.compile($('template#sns-share').html())({
+        "title": document.title,
+        "url": location.href,
+        "description": $('meta[name=description]').attr('content')
+      }))
+    }
+  </script>
+  <script src="pwa/main.js"></script>
 </body>
+
 </html>

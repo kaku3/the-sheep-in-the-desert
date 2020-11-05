@@ -6,7 +6,7 @@ workbox.loadModule('workbox-strategies');
 
 const precacheController = new workbox.precaching.PrecacheController();
 
-const REVISION = '0.03'
+const REVISION = '0.04'
 const baseUrl = location.href.replace(/\/sw.js$/, '');
 const urls = [
     { url:'/index.html', revision: REVISION },
