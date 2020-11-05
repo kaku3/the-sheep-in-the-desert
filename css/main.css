@@ -1,160 +1,189 @@
 body {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    background: #eee;
+  margin: 0;
+  padding: 0 0 2rem 0;
+  text-align: center;
+  background: #ecf0f1;
 
-    font-size: 32px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 32px;
 }
 main {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    margin: 32px 0;
-    padding: 0;
-    width: 100vw;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  margin: 32px 0 64px;
+  padding: 0;
+  width: 100%;
 }
 
-footer .sns-share {
-    margin: auto;
-    padding-left: 16px;
-    max-width: 640px;
+.sns-container {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
-footer a {
-    font-size: 24px;
+.sns-container .sns-share {
+  margin: auto;
+  max-width: 640px;
 }
 
-footer ul {
-    list-style: none;
-    padding: 0;
+.sns-container a {
+  font-size: 24px;
+}
+
+.sns-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+#hiscores-container {
+  padding: 1rem;
+  font-family: 'VT323',  'M PLUS Rounded 1c', sans-serif;;
+  background-color: #bdc3c7;
+}
+
+#hiscores-container h2 {
+  margin-bottom: 2rem;
+  letter-spacing: 1.25rem;
+}
+
+#hiscores-container table {
+  margin: 0 auto 1rem;
+  width: 640px;
 }
 
 .game {
-    position: relative;
-    margin: auto;
-    width: 640px;
-    height: 640px;
-    background-image: url("../image/bg.png?__WB_REVISION__=0.03");
-    background-size: cover;
-    overflow: hidden;
+  position: relative;
+  margin: auto;
+  width: 640px;
+  height: 640px;
+  background-image: url("../image/bg.png?__WB_REVISION__=0.04");
+  background-size: cover;
+  overflow: hidden;
 
-    font-family: 'main';
+  font-family: 'VT323', monospace;
+}
+.game input, .game button {
+  font-family: 'VT323',  'M PLUS Rounded 1c', sans-serif;
+}
+
+.game .note {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: .75rem;
 }
 
 /*
-    title
+  title
 */
 
 .scene.title h1 {
-    margin-top: 25%;
+  margin-top: 25%;
 }
 .scene.title .start {
-    margin-top: 30%;
+  margin-top: 30%;
 }
 
 .scene.title h1 .title1 {
-    color: #222222;
+  color: #222222;
 
-    font-size: 4rem;
-    letter-spacing: 1.4;
+  font-size: 4rem;
+  letter-spacing: 1.4;
 }
 
 .scene.title h1 .title2 {
-    margin-top: .5rem;
+  margin-top: .5rem;
 
-    color: #444444;
+  color: #444444;
 
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 /*
     game
 */
 .scene.game {
-    position: relative;
+  position: relative;
 }
 .scene.game .console {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .game > .player {
-    position: absolute;
-    left: 24px;
-    bottom: 8px;
-    width: 64px;
-    height: 128px;
-    z-index: 1000;
-    background-image: url("../image/player-stand.png?__WB_REVISION__=0.03");
+  position: absolute;
+  left: 24px;
+  bottom: 8px;
+  width: 64px;
+  height: 128px;
+  z-index: 1000;
+  background-image: url("../image/player-stand.png?__WB_REVISION__=0.04");
 
-    pointer-events: none;
+  pointer-events: none;
 }
 .game > .player.attack {
-    background-image: url("../image/player-attack.png?__WB_REVISION__=0.03");
+  background-image: url("../image/player-attack.png?__WB_REVISION__=0.04");
 }
 
 .game > .sight {
-    position: absolute;
-    width: 64px;
-    height: 64px;
-    z-index: 10000;
-    background-image: url("../image/sight.png?__WB_REVISION__=0.03");
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  z-index: 10000;
+  background-image: url("../image/sight.png?__WB_REVISION__=0.04");
 
-    pointer-events: none;
+  pointer-events: none;
 }
 
 
 .scene.game .console > * {
-    padding: .5rem;
+  padding: .5rem;
 
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .scene.game .console > * > label {
-    font-size: 2.8rem;
+  font-size: 2.8rem;
 }
 
 .sheep {
-    position: absolute;
-    width: 192px;
-    height: 96px;
-    background-image: url("../image/sheep.png?__WB_REVISION__=0.03");
+  position: absolute;
+  width: 192px;
+  height: 96px;
+  background-image: url("../image/sheep.png?__WB_REVISION__=0.04");
 
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .horn.body {
-    position: absolute;
-    width: 36px;
-    height: 36px;
-    background-image: url("../image/horn.png?__WB_REVISION__=0.03");
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  background-image: url("../image/horn.png?__WB_REVISION__=0.04");
 
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .horn.shadow {
-    position: absolute;
-    width: 36px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: rgba(0,0,0, .5);
+  position: absolute;
+  width: 36px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(0,0,0, .5);
 
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .smoke {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background-image: url("../image/smoke.png?__WB_REVISION__=0.03");
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-image: url("../image/smoke.png?__WB_REVISION__=0.04");
 
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .score-effect {
-    position: absolute;
-    font-size: 24px;
-    z-index: 1000;
+  position: absolute;
+  font-size: 24px;
+  z-index: 1000;
 }
 
 /*
@@ -162,16 +191,73 @@ footer ul {
 */
 
 .scene.result h1 {
-    margin-top: 10%;
+  margin-top: 5%;
+  margin-bottom: 1rem;
 }
+.scene.result .score {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.scene.result .ranked {
+  margin-top: 1.5rem;
+}
+.scene.result #register-container {
+  margin-top: 1.5rem;
+}
+
+.scene.result #register-container #name {
+  text-align: center;
+  font-size: 2rem;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid black;
+}
+.scene.result #register-container #name:focus {
+  outline: none;
+}
+
+.scene.result #register-container button.register {
+  margin: 0 1rem;
+  padding: .5rem 1.5rem;
+  font-size: 1.5rem;
+}
+
+.scene.result #signin-container {
+  margin-top: 3rem;
+}
+.scene.result #signin-container .caution {
+  margin: 0;
+}
+.scene.result #signin-container button.signin {
+  margin-top: 1rem;
+  padding: .5rem 1.5rem;
+  font-size: 1.5rem;
+}
+
 .scene.result .buttons {
-    position: absolute;
-    bottom: 15%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .scene.result .buttons .button {
-    margin: 0 2rem;
-    cursor: pointer;
+  margin: 0 3rem;
+  cursor: pointer;
+}
+
+.scene.result #firebaseui-auth-container {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 640px;
+  height: 640px;
+  background: rgba(255, 255, 255, .95);
+}
+.scene.result #firebaseui-auth-container #firebaseui-auth-container-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
