@@ -205,7 +205,7 @@ class Game {
     this.initSight(game)
 
     this.score = 0
-    this.time = GAME_TIME
+    this.timeStart = (new Date()).getTime()
 
     // player 登場アニメ
     const tl = gsap.timeline()
@@ -420,7 +420,7 @@ class Game {
    * ゲーム処理
    */
   execGame() {
-    this.time -= FPS
+    this.time = GAME_TIME - ((new Date()).getTime() - this.timeStart)
     if (this.time <= 0) {
       this.time = 0
       this.setNextScene(SCENE.RESULT_INIT)
